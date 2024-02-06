@@ -2,4 +2,9 @@
     <string name="app_name">Modern Android Development</string>
     <string name="click_me">click me!</string>
     <string name="sample">sample</string>
+    <string name="shop">shop</string>
+    <string name="buy">buy</string>
+    <string name="cornerButton">corner button</string>
+    <string name="rounded">rounded</string>
+    <string name="elevated">elevated</string>
 </resources>
