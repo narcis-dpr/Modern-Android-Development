@@ -66,4 +66,8 @@ dependencies {
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    // view pager
+    implementation("com.google.accompanist:accompanist-pager:0.x.x")
+    implementation("com.google.accompanist:accompanist-pager- indicators:0.x.x")
+    implementation("androidx.Compose.material:material:1.x.x")
 }
