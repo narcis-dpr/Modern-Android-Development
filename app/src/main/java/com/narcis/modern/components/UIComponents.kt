@@ -1,5 +1,6 @@
 package com.narcis.modern.components
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -7,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CutCornerShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -108,6 +110,15 @@ fun ElevatedButtonExample() {
     }
 }
 
+@Composable
+fun ImageViewExample() {
+    Image(
+        painter = painterResource(id = R.drawable.three),
+        contentDescription = stringResource(id = R.string.image),
+        modifier = Modifier.size(200.dp),
+    )
+}
+
 @Preview
 @Composable
 private fun Preview() {
@@ -122,6 +133,8 @@ private fun Preview() {
         RoundCornerShapeButton()
         Spacer(modifier = Modifier.height(10.dp))
         ElevatedButtonExample()
+        Spacer(modifier = Modifier.height(10.dp))
+        ImageViewExample()
         Spacer(modifier = Modifier.height(10.dp))
     }
 }

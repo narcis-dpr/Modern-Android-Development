@@ -7,4 +7,5 @@
     <string name="cornerButton">corner button</string>
     <string name="rounded">rounded</string>
     <string name="elevated">elevated</string>
+    <string name="image">image</string>
 </resources>
