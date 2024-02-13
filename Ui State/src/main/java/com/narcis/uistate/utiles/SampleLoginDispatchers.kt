@@ -5,7 +5,7 @@ import kotlinx.coroutines.CoroutineDispatcher
 class SampleLoginDispatchers(
     val default: CoroutineDispatcher,
     val main: CoroutineDispatcher,
-    val io: CoroutineDispatcher
+    val io: CoroutineDispatcher,
 ) {
 
     companion object {
@@ -13,7 +13,7 @@ class SampleLoginDispatchers(
             return SampleLoginDispatchers(
                 default = coroutineDispatcher,
                 main = coroutineDispatcher,
-                io = coroutineDispatcher
+                io = coroutineDispatcher,
             )
         }
     }
