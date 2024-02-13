@@ -1,7 +1,11 @@
 package com.narcis.uistate.utiles
 
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 
 fun <T1, T2, T3, T4, R> combineFlows(
     flow: Flow<T1>,
@@ -17,3 +21,11 @@ fun <T1, T2, T3, T4, R> combineFlows(
         args[3] as T4,
     )
 }
+fun <T> Flow<T>.stateIn(
+    coroutineScope: CoroutineScope,
+    initialValue: T
+): StateFlow<T> = stateIn(
+    scope = coroutineScope,
+    started = SharingStarted.WhileSubscribed(5000),
+    initialValue = initialValue
+)
