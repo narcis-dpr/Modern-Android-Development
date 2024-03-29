@@ -6,6 +6,9 @@ data class AuthenticationState(
     val loading: Boolean = false,
     var togglePasswordVisibility: Boolean = true,
 ) {
+    fun isValidForm(): Boolean {
+        return userName.isNotEmpty() && password.isNotEmpty()
+    }
     companion object {
         val EMPTY_STATE = AuthenticationState()
     }
