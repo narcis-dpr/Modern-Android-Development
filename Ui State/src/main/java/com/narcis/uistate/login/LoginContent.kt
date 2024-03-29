@@ -12,18 +12,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.AnnotatedString
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.narcis.uistate.R
 import com.narcis.uistate.data.AuthenticationState
+import com.narcis.uistate.login.components.LoginButton
+import com.narcis.uistate.login.components.PasswordInputField
+import com.narcis.uistate.login.components.UserNameField
 import com.narcis.uistate.ui.theme.Purple700
+import com.narcis.uistate.utiles.TestTags
 import com.narcis.uistate.utiles.TestTags.LoginContent.LOGO_IMAGE
 
 
@@ -34,7 +43,8 @@ fun LoginContent(
     onUserNameUpdate: (String) -> Unit,
     onPasswordUpdate: (String) -> Unit,
     onLogin: () -> Unit,
-    passwordToggleVisibility: (Boolean) -> Unit
+    passwordToggleVisibility: (Boolean) -> Unit,
+    onRegister: () -> Unit
 ) {
     val scrollState = rememberScrollState()
     Column(
@@ -71,6 +81,37 @@ fun LoginContent(
                 horizontalAlignment = Alignment.CenterHorizontally
 
             ) {
+                UserNameField(
+                    authState = uiState,
+                    onValueChanged = onUserNameUpdate
+                )
+                PasswordInputField(
+                    authState = uiState,
+                    onValueChanged = onPasswordUpdate,
+                    passwordToggleVisibility = passwordToggleVisibility,
+                    text = stringResource(id = R.string.password)
+                )
+                LoginButton(
+                    isLoading = uiState.loading,
+                    onLoginClicked = { onLogin.invoke() },
+                    text = stringResource(id = R.string.sign_in),
+                    enabled = if (uiState.isValidForm()) {
+                        !uiState.loading
+                    } else {
+                        false
+                    },
+                )
+                ClickableText(
+                    modifier = Modifier
+                        .padding(top = 12.dp)
+                        .testTag(TestTags.LoginContent.REGISTER_USER),
+                    text = AnnotatedString(stringResource(id = R.string.register)),
+                    onClick = { onRegister.invoke() },
+                    style = TextStyle(
+                        color = Purple700,
+                        fontSize = 16.sp
+                    )
+                )
             }
 
         }
