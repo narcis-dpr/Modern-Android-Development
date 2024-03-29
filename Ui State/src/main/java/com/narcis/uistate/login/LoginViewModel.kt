@@ -63,4 +63,9 @@ class LoginViewModel @Inject constructor(
     fun passwordVisibility(visibility: Boolean) {
         passwordVisibility.value = visibility
     }
+
+    fun login() {
+        loadingProgress.start()
+
+    }
 }
