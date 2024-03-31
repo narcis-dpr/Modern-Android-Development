@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Modern Android Development"
 include(":app")
-include(":Ui State")
+include(":uistate")
