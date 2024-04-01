@@ -3,6 +3,7 @@ package com.example.xmlcompose
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.runtime.Composable
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -18,7 +19,14 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.alertDialog.setContent {
+            GreetingAlertDialog()
+        }
 
+    }
+
+    @Composable
+    fun SimpleAlertDialog() {
 
     }
 }

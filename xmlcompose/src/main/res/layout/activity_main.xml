@@ -7,8 +7,10 @@
     android:fitsSystemWindows="true"
     android:id="@+id/content_main"
     tools:context=".MainActivity">
-
-
-
+    <androidx.compose.ui.platform.ComposeView
+        android:id="@+id/alert_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
