@@ -8,6 +8,9 @@
       <entry key="uistate">
         <State />
       </entry>
+      <entry key="xmlcompose">
+        <State />
+      </entry>
     </value>
   </component>
 </project>

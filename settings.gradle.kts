@@ -16,3 +16,4 @@ dependencyResolutionManagement {
 rootProject.name = "Modern Android Development"
 include(":app")
 include(":uistate")
+include(":xmlcompose")
