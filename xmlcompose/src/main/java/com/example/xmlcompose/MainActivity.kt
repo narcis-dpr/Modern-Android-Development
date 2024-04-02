@@ -1,13 +1,11 @@
 package com.example.xmlcompose
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import com.example.xmlcompose.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -22,11 +20,24 @@ class MainActivity : AppCompatActivity() {
         binding.alertDialog.setContent {
             GreetingAlertDialog()
         }
-
     }
 
     @Composable
-    fun SimpleAlertDialog() {
-
+    fun GreetingAlertDialog() {
+        AlertDialog(
+            onDismissRequest = {},
+            confirmButton = {
+                TextButton(onClick = {}) {
+                    Text(text = "Ok")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = {}) {
+                    Text(text = "OK")
+                }
+            },
+            title = { Text(text = "Hello") },
+            text = { Text(text = "Hello, and thank you for being here ! ") }
+        )
     }
 }
