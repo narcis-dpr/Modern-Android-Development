@@ -21,23 +21,23 @@ class MainActivity : AppCompatActivity() {
             GreetingAlertDialog()
         }
     }
+}
 
-    @Composable
-    fun GreetingAlertDialog() {
-        AlertDialog(
-            onDismissRequest = {},
-            confirmButton = {
-                TextButton(onClick = {}) {
-                    Text(text = "Ok")
-                }
-            },
-            dismissButton = {
-                TextButton(onClick = {}) {
-                    Text(text = "OK")
-                }
-            },
-            title = { Text(text = "Hello") },
-            text = { Text(text = "Hello, and thank you for being here ! ") }
-        )
-    }
+@Composable
+fun GreetingAlertDialog() {
+    AlertDialog(
+        onDismissRequest = {},
+        confirmButton = {
+            TextButton(onClick = {}) {
+                Text(text = "Ok")
+            }
+        },
+        dismissButton = {
+            TextButton(onClick = {}) {
+                Text(text = "OK")
+            }
+        },
+        title = { Text(text = "Hello") },
+        text = { Text(text = "Hello, and thank you for being here ! ") }
+    )
 }
