@@ -7,5 +7,6 @@ object TestTags {
         const val ANDROID_TEXT = "community_text"
         const val USERNAME_FIELD = "username_field"
         const val PASSWORD_FIELD = "password_field"
+        const val REGISTER_USER = "register_user"
     }
 }
