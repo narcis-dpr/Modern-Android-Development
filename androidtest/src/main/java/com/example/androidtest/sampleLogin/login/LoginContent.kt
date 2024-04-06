@@ -1,4 +1,4 @@
-package com.example.androidtest.sampleLogin
+package com.example.androidtest.sampleLogin.login
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -30,7 +30,6 @@ import com.example.androidtest.R
 import com.example.androidtest.sampleLogin.state.AuthenticationState
 import com.example.androidtest.sampleLogin.util.LoginButton
 import com.example.androidtest.sampleLogin.util.PasswordInputField
-import com.example.androidtest.sampleLogin.util.TestTags
 import com.example.androidtest.sampleLogin.util.TestTags.LoginContent.LOGO_IMAGE
 import com.example.androidtest.sampleLogin.util.TestTags.LoginContent.REGISTER_USER
 import com.example.androidtest.sampleLogin.util.UserNameField
@@ -44,7 +43,7 @@ fun LoginContent(
     onPasswordUpdated: (String) -> Unit,
     onLogin: () -> Unit,
     passwordToggleVisibility: (Boolean) -> Unit,
-    onRegister: () -> Unit
+    onRegister: () -> Unit,
 ) {
     val scrollState = rememberScrollState()
 
@@ -54,14 +53,14 @@ fun LoginContent(
                 .fillMaxWidth()
                 .background(PURPLE_700),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
             Image(
                 painter = painterResource(
-                    id = R.drawable.ic_launcher_foreground
+                    id = R.drawable.ic_launcher_foreground,
                 ),
                 modifier = modifier.testTag(LOGO_IMAGE),
-                contentDescription = "Logo"
+                contentDescription = "Logo",
             )
         }
         Card(
@@ -70,14 +69,14 @@ fun LoginContent(
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.purple_700))
                 .weight(5.0f),
-            elevation = CardDefaults.cardElevation(8.dp)
+            elevation = CardDefaults.cardElevation(8.dp),
         ) {
             Column(
                 modifier = modifier
                     .fillMaxSize()
                     .padding(horizontal = 16.dp)
                     .scrollable(scrollState, Orientation.Vertical),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
 
             ) {
                 UserNameField(authState = uiState, onValueChanged = onUsernameUpdated)
@@ -85,7 +84,7 @@ fun LoginContent(
                     text = stringResource(id = R.string.password),
                     authState = uiState,
                     onValueChanged = onPasswordUpdated,
-                    passwordToggleVisibility = passwordToggleVisibility
+                    passwordToggleVisibility = passwordToggleVisibility,
                 )
                 LoginButton(
                     text = stringResource(id = R.string.sign_in),
@@ -97,7 +96,7 @@ fun LoginContent(
                     onLoginClicked = {
                         onLogin.invoke()
                     },
-                    isLoading = uiState.loading
+                    isLoading = uiState.loading,
                 )
                 ClickableText(
                     modifier = Modifier
@@ -107,8 +106,8 @@ fun LoginContent(
                     onClick = { onRegister.invoke() },
                     style = TextStyle(
                         colorResource(id = R.color.purple_700),
-                        fontSize = 16.sp
-                    )
+                        fontSize = 16.sp,
+                    ),
                 )
             }
         }

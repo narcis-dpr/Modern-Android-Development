@@ -1,7 +1,7 @@
 package com.example.androidtest.sampleLogin.test
 
 import androidx.compose.runtime.Composable
-import com.example.androidtest.sampleLogin.LoginContent
+import com.example.androidtest.sampleLogin.login.LoginContent
 import com.example.androidtest.sampleLogin.state.AuthenticationState
 
 @Composable
