@@ -15,6 +15,8 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun Transaction() {
+    val uri = "www.yourcompanieslink.com"
+
     Column(
         modifier = Modifier.fillMaxSize()
             .wrapContentSize(Alignment.Center)
