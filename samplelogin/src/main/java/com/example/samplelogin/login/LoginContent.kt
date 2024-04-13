@@ -41,30 +41,27 @@ fun LoginContent(
     onPasswordUpdated: (String) -> Unit,
     onLogin: () -> Unit,
     passwordToggleVisibility: (Boolean) -> Unit,
-    onRegister: () -> Unit
+    onRegister: () -> Unit,
 ) {
     val scrollState = rememberScrollState()
 
     Column(
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxSize(),
     ) {
-
         Column(
             modifier = modifier
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.purple_700)),
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
         ) {
-
             Image(
                 modifier = modifier
                     .testTag(LOGO_IMAGE),
                 painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                contentDescription = stringResource(id = R.string.logo)
+                contentDescription = stringResource(id = R.string.logo),
             )
-
         }
 
         Card(
@@ -72,23 +69,23 @@ fun LoginContent(
             modifier = modifier
                 .fillMaxWidth()
                 .background(colorResource(id = R.color.purple_700))
-                .weight(5.0f), elevation = 8.dp
+                .weight(5.0f),
+            elevation = 8.dp,
         ) {
             Column(
                 modifier = modifier
                     .fillMaxSize()
                     .padding(horizontal = 16.dp)
                     .scrollable(scrollState, Orientation.Vertical),
-                horizontalAlignment = Alignment.CenterHorizontally
+                horizontalAlignment = Alignment.CenterHorizontally,
 
             ) {
-
                 UserNameField(authState = uiState, onValueChanged = onUsernameUpdated)
                 PasswordInputField(
                     text = stringResource(id = R.string.password),
                     authState = uiState,
                     onValueChanged = onPasswordUpdated,
-                    passwordToggleVisibility = passwordToggleVisibility
+                    passwordToggleVisibility = passwordToggleVisibility,
                 )
                 LoginButton(
                     text = stringResource(id = R.string.sign_in),
@@ -100,7 +97,7 @@ fun LoginContent(
                     onLoginClicked = {
                         onLogin.invoke()
                     },
-                    isLoading = uiState.loading
+                    isLoading = uiState.loading,
                 )
 
                 ClickableText(
@@ -111,8 +108,8 @@ fun LoginContent(
                     onClick = { onRegister.invoke() },
                     style = TextStyle(
                         colorResource(id = R.color.purple_700),
-                        fontSize = 16.sp
-                    )
+                        fontSize = 16.sp,
+                    ),
                 )
             }
         }
