@@ -1,5 +1,6 @@
 package com.narcis.navigation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -25,6 +26,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navDeepLink
 import com.narcis.navigation.ui.theme.ModernAndroidDevelopmentTheme
 import com.narcis.navigation.ui.theme.Purple700
 import com.narcis.navigation.util.Destination
@@ -43,6 +45,11 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+//        navigationController.handleDeepLink(intent)
     }
 }
 
@@ -76,6 +83,11 @@ fun AppNavigation(navController: NavHostController) {
         }
         composable(Destination.Settings.route) {
             Settings()
+        }
+
+        val uri = "www.yourcompanieslink.com"
+        composable(deepLinks = listOf(navDeepLink { uriPattern =  "$uri/${id}"}), route =
+        Destination.Settings.route) {
         }
     }
 }
@@ -116,6 +128,5 @@ fun BottomNavigationBar(navController: NavController, appItems: List<Destination
 @Composable
 fun GreetingPreview() {
     ModernAndroidDevelopmentTheme {
-
     }
 }

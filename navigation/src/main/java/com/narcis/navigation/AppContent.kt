@@ -15,11 +15,9 @@ import androidx.compose.ui.unit.sp
 
 @Composable
 fun Transaction() {
-    val uri = "www.yourcompanieslink.com"
-
     Column(
         modifier = Modifier.fillMaxSize()
-            .wrapContentSize(Alignment.Center)
+            .wrapContentSize(Alignment.Center),
     ) {
         Text(
             text = stringResource(id = R.string.transaction),
@@ -27,7 +25,7 @@ fun Transaction() {
             color = Color.Gray,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
-            fontSize = 18.sp
+            fontSize = 18.sp,
         )
     }
 }
@@ -37,7 +35,7 @@ fun Budget() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
+            .wrapContentSize(Alignment.Center),
     ) {
         Text(
             text = stringResource(id = R.string.budget),
@@ -45,7 +43,7 @@ fun Budget() {
             color = Color.Gray,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
-            fontSize = 18.sp
+            fontSize = 18.sp,
         )
     }
 }
@@ -55,7 +53,7 @@ fun Tasks() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
+            .wrapContentSize(Alignment.Center),
     ) {
         Text(
             text = stringResource(id = R.string.tasks),
@@ -63,7 +61,7 @@ fun Tasks() {
             color = Color.Gray,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
-            fontSize = 18.sp
+            fontSize = 18.sp,
         )
     }
 }
@@ -73,7 +71,7 @@ fun Settings() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
+            .wrapContentSize(Alignment.Center),
     ) {
         Text(
             text = stringResource(id = R.string.setting),
@@ -81,7 +79,7 @@ fun Settings() {
             color = Color.Gray,
             modifier = Modifier.align(Alignment.CenterHorizontally),
             textAlign = TextAlign.Center,
-            fontSize = 18.sp
+            fontSize = 18.sp,
         )
     }
 }
