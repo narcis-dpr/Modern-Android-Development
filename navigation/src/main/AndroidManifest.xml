@@ -15,8 +15,11 @@
             android:theme="@style/Theme.ModernAndroidDevelopment">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+
+                <data android:scheme="https"
+                    android:host= "www.yourcomposelink.com"
+                    />
             </intent-filter>
         </activity>
     </application>

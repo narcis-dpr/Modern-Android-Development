@@ -1,6 +1,5 @@
 package com.example.samplelogin.login.components
 
-
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Row
@@ -8,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import com.example.samplelogin.R
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
@@ -22,6 +20,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.samplelogin.R
 import com.example.samplelogin.data.AuthenticationState
 import com.example.samplelogin.util.TestTags
 
@@ -30,7 +29,7 @@ import com.example.samplelogin.util.TestTags
 fun UserNameField(
     authState: AuthenticationState,
     onValueChanged: (String) -> Unit,
-    isError: Boolean = authState.userName.contains("[^a-zA-z0-9]".toRegex())
+    isError: Boolean = authState.userName.contains("[^a-zA-z0-9]".toRegex()),
 ) {
     OutlinedTextField(
         value = authState.userName,
@@ -45,18 +44,18 @@ fun UserNameField(
             .testTag(TestTags.LoginContent.USERNAME_FIELD),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.Black
+            unfocusedBorderColor = Color.Black,
         ),
         isError = isError,
         maxLines = 1,
-        singleLine = true
+        singleLine = true,
     )
 
     if (authState.userName.contains("[^a-zA-z0-9]".toRegex())) {
         Text(
             text = stringResource(id = R.string.error),
             fontSize = 14.sp,
-            modifier = Modifier.padding(horizontal = 30.dp, vertical = 6.dp)
+            modifier = Modifier.padding(horizontal = 30.dp, vertical = 6.dp),
         )
     }
 }
@@ -66,7 +65,7 @@ fun PasswordInputField(
     authState: AuthenticationState,
     onValueChanged: (String) -> Unit,
     passwordToggleVisibility: (Boolean) -> Unit,
-    text: String
+    text: String,
 ) {
     OutlinedTextField(
         value = authState.password,
@@ -78,36 +77,35 @@ fun PasswordInputField(
             .testTag(TestTags.LoginContent.PASSWORD_FIELD),
         enabled = !authState.loading,
         trailingIcon = {
-            IconButton(onClick =
-            {
-                if (!authState.loading) passwordToggleVisibility(!authState.togglePasswordVisibility)
-            })
-            {
+            IconButton(
+                onClick =
+                {
+                    if (!authState.loading) passwordToggleVisibility(!authState.togglePasswordVisibility)
+                },
+            ) {
                 Icon(
                     imageVector = if (authState.togglePasswordVisibility) Icons.Default.Visibility else Icons.Default.VisibilityOff,
-                    contentDescription = stringResource(id = R.string.toggle)
+                    contentDescription = stringResource(id = R.string.toggle),
                 )
             }
         },
         visualTransformation = if (authState.togglePasswordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
         colors = TextFieldDefaults.outlinedTextFieldColors(
             focusedBorderColor = Color.Blue,
-            unfocusedBorderColor = Color.Black
+            unfocusedBorderColor = Color.Black,
         ),
         maxLines = 1,
-        singleLine = true
+        singleLine = true,
     )
 }
-
 
 @Composable
 fun LoginButton(
     isLoading: Boolean,
     enabled: Boolean = false,
     onLoginClicked: () -> Unit,
-    text: String
+    text: String,
 ) {
-
     Button(
         onClick = onLoginClicked,
         enabled = enabled,
@@ -119,14 +117,14 @@ fun LoginButton(
         border = BorderStroke(2.dp, Color.Gray),
         colors = ButtonDefaults.buttonColors(
             contentColor = Color.Blue,
-            backgroundColor = Color.White
-        )
+            backgroundColor = Color.White,
+        ),
     ) {
         if (isLoading) {
             AnimatedVisibility(visible = isLoading) {
                 Row {
                     CircularProgressIndicator(
-                        color = MaterialTheme.colors.onPrimary
+                        color = MaterialTheme.colors.onPrimary,
                     )
                 }
             }
@@ -134,9 +132,8 @@ fun LoginButton(
             Text(
                 text = text,
                 fontSize = 14.sp,
-                modifier = Modifier.padding(horizontal = 30.dp, vertical = 6.dp)
+                modifier = Modifier.padding(horizontal = 30.dp, vertical = 6.dp),
             )
         }
-
     }
 }
