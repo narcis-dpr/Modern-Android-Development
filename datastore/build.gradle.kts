@@ -1,6 +1,9 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+//    id("com.google.protobuf" version "0.8.12")
 }
 
 android {
@@ -59,6 +62,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material:1.4.2")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -69,4 +73,13 @@ dependencies {
 
     implementation("androidx.DataStore:DataStore-preferences:1.0.0")
     implementation("androidx.datastore:datastore-preferences-core:1.0.0")
+    implementation("androidx.datastore:datastore-core:1.0.0")
+
+    implementation("androidx.datastore:datastore:1.1.0-alpha04")
+    implementation("com.google.protobuf:protobuf-javalite:3.21.7")
+
+    implementation("com.google.dagger:hilt-android:2.44.2")
+    kapt ("com.google.dagger:hilt-compiler:2.44.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
+
 }
