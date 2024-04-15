@@ -6,8 +6,10 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
+import javax.inject.Inject
 
-class DataStoreManagerImpl(private val tasksPreferenceStore: DataStore<Preferences>):
+class DataStoreManagerImpl @Inject constructor(
+    private val tasksPreferenceStore: DataStore<Preferences>) :
     DataStoreManager {
     private val FIRST_TASK = stringPreferencesKey("first_task")
     private val SECOND_TASK = stringPreferencesKey("second_task")
