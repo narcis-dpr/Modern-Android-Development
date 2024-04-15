@@ -1,4 +1,4 @@
-package com.narcis.datastore
+package com.narcis.datastore.data
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
@@ -7,7 +7,8 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
-class DataStoreManagerImpl(private val tasksPreferenceStore: DataStore<Preferences>): DataStoreManager {
+class DataStoreManagerImpl(private val tasksPreferenceStore: DataStore<Preferences>):
+    DataStoreManager {
     private val FIRST_TASK = stringPreferencesKey("first_task")
     private val SECOND_TASK = stringPreferencesKey("second_task")
     private val THIRD_TASK = stringPreferencesKey("third_task")
@@ -19,7 +20,7 @@ class DataStoreManagerImpl(private val tasksPreferenceStore: DataStore<Preferenc
         }
     }
 
-    override fun getTasks(): Flow<Tasks> = tasksPreferenceStore.data.map {tasksPreference ->
+    override fun getTasks(): Flow<Tasks> = tasksPreferenceStore.data.map { tasksPreference ->
         Tasks(
             firstTask = tasksPreference[FIRST_TASK] ?: "",
             secondTask = tasksPreference[SECOND_TASK] ?: "",

@@ -1,7 +1,7 @@
 package com.narcis.datastore.di
 
-import com.narcis.datastore.DataStoreManager
-import com.narcis.datastore.DataStoreManagerImpl
+import com.narcis.datastore.data.DataStoreManager
+import com.narcis.datastore.data.DataStoreManagerImpl
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

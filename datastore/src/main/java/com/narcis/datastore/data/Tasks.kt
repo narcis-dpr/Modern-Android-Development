@@ -1,4 +1,4 @@
-package com.narcis.datastore
+package com.narcis.datastore.data
 
 data class Tasks(
     val firstTask: String,

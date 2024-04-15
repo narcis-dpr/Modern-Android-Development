@@ -1,4 +1,4 @@
-package com.narcis.datastore
+package com.narcis.datastore.data
 
 import kotlinx.coroutines.flow.Flow
 
