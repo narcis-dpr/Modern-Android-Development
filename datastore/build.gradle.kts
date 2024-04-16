@@ -3,7 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("dagger.hilt.android.plugin")
-//    id("com.google.protobuf" version "0.8.12")
+    id("com.google.protobuf").version("0.9.4")
 }
 
 android {
@@ -83,4 +83,18 @@ dependencies {
     kapt ("com.google.dagger:hilt-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+}
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.11.0" // Specify the protoc version
+    }
+    generateProtoTasks {
+        all().forEach { task ->
+            task.builtins {
+                create("java") {
+                    option("lite")
+                }
+            }
+        }
+    }
 }
