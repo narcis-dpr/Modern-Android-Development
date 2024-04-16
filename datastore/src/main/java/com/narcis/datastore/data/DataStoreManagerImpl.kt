@@ -29,4 +29,12 @@ class DataStoreManagerImpl @Inject constructor(
             thirdTask = tasksPreference[THIRD_TASK] ?: ""
         )
     }
+
+    override suspend fun saveTasksToProtoStore(tasks: Tasks) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getTasksFromProtoStore(): Flow<Tasks> {
+        TODO("Not yet implemented")
+    }
 }
