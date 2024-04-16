@@ -19,3 +19,11 @@ handle ui state with view model, dependency injection, xml and compose, writing 
 
 
 <img src= "https://github.com/narcis-dpr/Modern-Android-Development/assets/29674637/fe92b7ed-0579-4f96-bb93-4364a93c1f4a" width="200" height="400">
+
+### Data store :
+
+saveing and retrieving data using data store library in a sample app : 
+
+
+
+<img src= "https://github.com/narcis-dpr/Modern-Android-Development/assets/29674637/a10dc862-adb7-44a8-9d9b-480c847baef6" width="200" height="400">
