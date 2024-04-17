@@ -8,4 +8,6 @@ import javax.inject.Inject
 interface TaskService {
     fun getTasksFromPrefDataStore(): Flow<Tasks>
     suspend fun addTasks(tasks: Tasks)
+    fun getTasks(): Flow<Tasks>
+     fun getTasksFromProtoStore(): Flow<Tasks>
 }

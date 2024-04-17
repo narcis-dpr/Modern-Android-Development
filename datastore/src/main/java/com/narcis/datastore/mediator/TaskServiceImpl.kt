@@ -15,4 +15,9 @@ class TaskServiceImpl @Inject constructor(
     override suspend fun addTasks(tasks: Tasks) {
         dataStoreManager.saveTasks(tasks)
     }
+
+    override fun getTasks(): Flow<Tasks> = getTasksFromProtoStore()
+
+    override fun getTasksFromProtoStore(): Flow<Tasks> =
+        dataStoreManager.getTasksFromProtoStore()
 }
