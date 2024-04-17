@@ -4,12 +4,15 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
+import com.narcis.datastore.TaskPreference
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class DataStoreManagerImpl @Inject constructor(
-    private val tasksPreferenceStore: DataStore<Preferences>) :
+    private val tasksPreferenceStore: DataStore<Preferences>,
+    private val taskProtoDataStore: DataStore<TaskPreference>
+) :
     DataStoreManager {
     private val FIRST_TASK = stringPreferencesKey("first_task")
     private val SECOND_TASK = stringPreferencesKey("second_task")
@@ -31,10 +34,21 @@ class DataStoreManagerImpl @Inject constructor(
     }
 
     override suspend fun saveTasksToProtoStore(tasks: Tasks) {
-        TODO("Not yet implemented")
+        taskProtoDataStore.updateData { taskData ->
+            taskData.toBuilder()
+                .setFirstTask(tasks.firstTask)
+                .setSecondTask(tasks.secondTask)
+                .setThirdTask(tasks.thirdTask)
+                .build()
+        }
     }
 
-    override fun getTasksFromProtoStore(): Flow<Tasks> {
-        TODO("Not yet implemented")
-    }
+    override fun getTasksFromProtoStore(): Flow<Tasks> =
+        taskProtoDataStore.data.map { tasks ->
+            Tasks(
+                tasks.firstTask,
+                tasks.secondTask,
+                tasks.thirdTask
+            )
+        }
 }
