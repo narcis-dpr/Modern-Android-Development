@@ -83,6 +83,11 @@ dependencies {
     kapt ("com.google.dagger:hilt-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
 
+
+    testImplementation("io.mockk:mockk:1.13.3")
+    androidTestImplementation("io.mockk:mockk-android:1.13.3")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2")
+
 }
 protobuf {
     protoc {
