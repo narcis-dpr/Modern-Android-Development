@@ -69,7 +69,8 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // room
-    implementation("androidx.Room:Room-runtime:2.x.x")
-    kapt("androidx.Room:Room-compiler:2.x.x")
+    implementation("androidx.Room:Room-runtime:2.6.1")
+    implementation("androidx.room:room-common:2.6.1")
+    kapt("androidx.Room:Room-compiler:2.6.1")
 
 }
