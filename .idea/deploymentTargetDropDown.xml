@@ -14,6 +14,9 @@
       <entry key="navigation">
         <State />
       </entry>
+      <entry key="roomdatabase">
+        <State />
+      </entry>
       <entry key="samplelogin">
         <State />
       </entry>
