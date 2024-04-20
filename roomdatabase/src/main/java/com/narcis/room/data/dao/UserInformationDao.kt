@@ -16,7 +16,7 @@ interface UserInformationDao {
     fun getUsersInformation(): Flow<List<UserInformationModel>>
 
     @Query("SELECT * FROM user_information WHERE id = :userId")
-    fun loadAllUserInformation(userId: Int): Flow<UserInformationModel>
+    fun loadAllUserInformation(userId: Int = 0): Flow<UserInformationModel>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertUserInformation(userInformation: UserInformationModel)
