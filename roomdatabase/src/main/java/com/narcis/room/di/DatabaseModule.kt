@@ -1,4 +1,4 @@
-package com.narcis.room.data.di
+package com.narcis.room.di
 
 import android.content.Context
 import androidx.room.Room
