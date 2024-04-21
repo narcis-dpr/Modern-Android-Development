@@ -71,12 +71,13 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
     // room
-    implementation("androidx.Room:Room-runtime:2.6.1")
-    implementation("androidx.room:room-common:2.6.1")
-    kapt("androidx.Room:Room-compiler:2.6.1")
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    kapt("androidx.room:room-compiler:2.6.1")
+
     // hilt
     implementation("com.google.dagger:hilt-android:2.48")
-    kapt("com.google.dagger:hilt-compiler:2.44")
+    kapt("com.google.dagger:hilt-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
 }
