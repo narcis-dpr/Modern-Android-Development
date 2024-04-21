@@ -7,4 +7,7 @@ import com.narcis.room.data.UserInformationModel
 @Database(entities = [UserInformationModel::class], version = 1, exportSchema = false)
 abstract class UserInformationDatabase: RoomDatabase() {
     abstract fun userInformationDao(): UserInformationDao
+    abstract fun budgetDao(): BudgetDao
+    abstract fun itemDao(): ItemDao
+    abstract fun expenseDao(): ExpenseDao
 }
