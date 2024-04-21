@@ -3,6 +3,8 @@ package com.narcis.room.data
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.Date
 
 @Entity(tableName = "expenses")
 data class ExpenseData(
@@ -19,5 +21,10 @@ data class ExpenseData(
 )
 
 data class Tasks(
-    val id: Int = 0
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
+    var description: String,
+    var priority: Int,
+    @ColumnInfo(name = "update_at")
+    var updatedAt: Date
 )
