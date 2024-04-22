@@ -8,6 +8,7 @@ import java.util.Date
 
 @Entity(tableName = "expenses")
 data class ExpenseData(
+    @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     var expenseName: String = "",
     var expenseType: String = "",
@@ -22,9 +23,9 @@ data class ExpenseData(
 
 data class Tasks(
     @PrimaryKey(autoGenerate = true)
-    var id: Int = 0,
+    var idd: Int,
     var description: String,
     var priority: Int,
-    @ColumnInfo(name = "update_at")
-    var updatedAt: Date
+    @ColumnInfo(name = "update_att")
+    var updatedAt: Int
 )

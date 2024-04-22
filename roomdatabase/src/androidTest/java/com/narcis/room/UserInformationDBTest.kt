@@ -10,7 +10,6 @@ import com.narcis.room.data.dao.UserInformationDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancelAndJoin
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
@@ -59,6 +58,46 @@ class UserInformationDBTest {
         latch.await()
         job.cancelAndJoin()
     }
+
+    @Test
+    fun deleteUserInformation() = runBlocking {
+        val userOne = UserInformationModel(
+            id = 1,
+            firstName = "Narcis",
+            lastName = "papi",
+            dateOfBirth = 9121990,
+            gender = "Female",
+            city = "Tehran",
+            profession = "Android Engineer"
+        )
+
+        val userTwo = UserInformationModel(
+            id = 2,
+            firstName = "Sima",
+            lastName = "Bina",
+            dateOfBirth = 9821990,
+            gender = "Female",
+            city = "Tehran",
+            profession = "Hr"
+        )
+
+        userInformationDao.insertUserInformation(userOne)
+        userInformationDao.insertUserInformation(userTwo)
+
+        userInformationDao.deleteUserInformation(userTwo)
+
+        val latch = CountDownLatch(1)
+        val job = async(Dispatchers.IO) {
+            userInformationDao.loadAllUserInformation().collect {
+                assertThat(it).doesNotContain(userTwo)
+                latch.countDown()
+            }
+        }
+        latch.await()
+        job.cancelAndJoin()
+    }
+
+
     @After
     fun closeDatabase() {
         database.close()
