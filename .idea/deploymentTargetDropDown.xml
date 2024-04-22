@@ -26,6 +26,9 @@
       <entry key="uistate">
         <State />
       </entry>
+      <entry key="workmanager">
+        <State />
+      </entry>
       <entry key="xmlcompose">
         <State />
       </entry>
