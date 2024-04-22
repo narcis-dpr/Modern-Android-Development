@@ -80,4 +80,8 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:2.48")
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
 
+    //test
+    androidTestImplementation("com.google.truth:truth:1.1.3")
+    androidTestImplementation("android.arch.core:core-testing:1.1.1")
+
 }
