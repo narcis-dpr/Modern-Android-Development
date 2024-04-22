@@ -3,11 +3,20 @@ package com.narcis.room
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.google.common.truth.Truth.assertThat
+import com.narcis.room.data.UserInformationModel
 import com.narcis.room.data.dao.UserInformationDao
 import com.narcis.room.data.dao.UserInformationDatabase
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.async
+import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.runBlocking
 import org.junit.After
 import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.concurrent.CountDownLatch
 
 @RunWith(AndroidJUnit4::class)
 class UserInformationDBTest {
@@ -24,6 +33,32 @@ class UserInformationDBTest {
         userInformationDao = database.userInformationDao()
     }
 
+    @Test
+    fun insertUserInformationReturnsTrue() = runBlocking {
+        val userOne = UserInformationModel(
+            id = 1,
+            firstName = "Narcis",
+            lastName = "papi",
+            dateOfBirth = 9121990,
+            gender = "Female",
+            city = "Tehran",
+            profession = "Android Engineer"
+        )
+
+        userInformationDao.insertUserInformation(userOne)
+
+        val latch = CountDownLatch(1)
+        val job = async(Dispatchers.IO) {
+            userInformationDao.getUsersInformation()
+                .collect {
+                    assertThat(it).contains(userOne)
+                    latch.countDown()
+                }
+        }
+
+        latch.await()
+        job.cancelAndJoin()
+    }
     @After
     fun closeDatabase() {
         database.close()
