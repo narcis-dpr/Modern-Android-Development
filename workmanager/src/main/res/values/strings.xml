@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">WorkManager</string>
+    <string name="notification_channel">notification</string>
+    <string name="notification_description">description</string>
 </resources>
