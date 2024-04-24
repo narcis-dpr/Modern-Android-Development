@@ -5,10 +5,10 @@ import com.example.pagination.service.NewsApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import javax.inject.Singleton
+import dagger.hilt.components.SingletonComponent
 
 @Module
-@InstallIn(Singleton::class)
+@InstallIn(SingletonComponent::class)
 class NetworkModule {
 
     @Provides
