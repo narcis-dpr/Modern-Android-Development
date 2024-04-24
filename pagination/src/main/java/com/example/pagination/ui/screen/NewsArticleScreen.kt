@@ -82,7 +82,7 @@ fun NewsArticleScreen() {
                     }
                 }
             }
-            is LoadState.NotLoading -> TODO()
+            is LoadState.NotLoading -> { }
         }
     }
 }
