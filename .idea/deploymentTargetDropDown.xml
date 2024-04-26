@@ -8,6 +8,9 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="custompagination">
+        <State />
+      </entry>
       <entry key="datastore">
         <State />
       </entry>
