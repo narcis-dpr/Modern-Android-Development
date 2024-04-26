@@ -33,7 +33,7 @@ class StudentViewModel(): ViewModel() {
         loadStudentProfile()
     }
 
-    private fun loadStudentProfile() {
+    fun loadStudentProfile() {
         viewModelScope.launch {
             ourPaginator.loadNextStudent()
         }
