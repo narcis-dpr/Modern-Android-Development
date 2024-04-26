@@ -34,6 +34,7 @@ fun NewsArticleScreen() {
     val articles = viewModel.getNewsArticle().collectAsLazyPagingItems()
 
     LazyColumn {
+        println(" the size is ${articles.itemCount}")
         items(count = articles.itemCount) { index ->
             NewsArticleCard(
                 author = articles[index]?.author ?: "",
