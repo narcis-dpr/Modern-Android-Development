@@ -11,7 +11,7 @@ Worker(context, params){
     override fun doWork(): ListenableWorker.Result {
         repeat(20) {
             try {
-
+                // download
             } catch (e: IOException) {
                 return ListenableWorker.Result.failure()
             }
