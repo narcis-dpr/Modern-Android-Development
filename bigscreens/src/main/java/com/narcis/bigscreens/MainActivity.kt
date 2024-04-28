@@ -3,6 +3,7 @@ package com.narcis.bigscreens
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -17,6 +18,7 @@ import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.window.layout.FoldingFeature
 import androidx.window.layout.WindowInfoTracker
+import com.narcis.bigscreens.components.CityApp
 import com.narcis.bigscreens.ui.theme.ModernAndroidDevelopmentTheme
 import com.narcis.bigscreens.util.DevicePosture
 import com.narcis.bigscreens.util.cityPosture
@@ -26,6 +28,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 
 class MainActivity : ComponentActivity() {
+    private val cityViewModel: CityViewModel by viewModels()
 
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,12 +60,11 @@ class MainActivity : ComponentActivity() {
                 val windowSize = calculateWindowSizeClass(activity = this)
                 val devicePosture = postureStateFlow.collectAsState().value
 
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-
-                }
+                CityApp(
+                    windowSizeClass = windowSize.widthSizeClass,
+                    devicePosture = devicePosture,
+                    cityViewModel = cityViewModel
+                )
             }
         }
     }
