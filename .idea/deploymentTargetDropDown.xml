@@ -35,6 +35,9 @@
       <entry key="uistate">
         <State />
       </entry>
+      <entry key="wearos">
+        <State />
+      </entry>
       <entry key="workmanager">
         <State />
       </entry>
