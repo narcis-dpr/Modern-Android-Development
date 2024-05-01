@@ -60,19 +60,67 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun WearApp(greetingName: String) {
+    val itemList = listOf(
+        "Item 1",
+        "Item 2",
+        "Item 3",
+        "Item 4",
+        "Item 5",
+        "Item 6",
+        "Item 7",
+        "Item 8",
+        "Item 9",
+        "Item 10",
+        "Item 11",
+        "Item 12",
+        "Item 13",
+        "Item 14",
+        "Item 15"
+    )
     ModernAndroidDevelopmentTheme {
+        /*
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .background(androidx.wear.compose.material.MaterialTheme.colors.background),
             contentAlignment = Alignment.Center
         ) {
-//            Sample2Button()
+            Sample2Button()
             val itemList = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5",)
-//            WearOSList(itemList = itemList)
-//            MessageCard()
-//            ChipWearExample()
+            WearOSList(itemList = itemList)
+            MessageCard()
+            ChipWearExample()
             ToggleChipWearExample()
+        }
+         */
+
+        val contentModifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = 8.dp)
+        val iconModifier = Modifier
+            .size(24.dp)
+            .wrapContentSize(align = Alignment.Center)
+
+        val scalingListState = rememberScalingLazyListState()
+
+        Scaffold(
+            timeText = { TimeText(modifier = Modifier.scrollAway(scalingListState))},
+            vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom)},
+            positionIndicator = {
+                PositionIndicator(scalingLazyListState = scalingListState)
+            }
+
+        ) {
+            ScalingLazyColumn(modifier = Modifier.fillMaxSize(),
+                autoCentering = AutoCenteringParams(itemIndex = 0),
+                state = scalingListState
+            ) {
+                item { SampleButton() }
+                item { Sample2Button() }
+                item { MessageCard() }
+                item { ChipWearExample() }
+                item { ToggleChipWearExample() }
+            }
         }
     }
 }
