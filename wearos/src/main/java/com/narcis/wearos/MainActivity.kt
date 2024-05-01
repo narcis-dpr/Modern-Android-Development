@@ -37,6 +37,7 @@ import androidx.wear.compose.material.rememberScalingLazyListState
 import androidx.wear.compose.material.scrollAway
 import com.narcis.wearos.presentation.components.ChipWearExample
 import com.narcis.wearos.presentation.components.MessageCard
+import com.narcis.wearos.presentation.components.ToggleChipWearExample
 import com.narcis.wearos.ui.theme.ModernAndroidDevelopmentTheme
 
 class MainActivity : ComponentActivity() {
@@ -70,7 +71,8 @@ fun WearApp(greetingName: String) {
             val itemList = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5",)
 //            WearOSList(itemList = itemList)
 //            MessageCard()
-            ChipWearExample()
+//            ChipWearExample()
+            ToggleChipWearExample()
         }
     }
 }
