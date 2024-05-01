@@ -24,13 +24,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.wear.compose.material.AutoCenteringParams
 import androidx.wear.compose.material.Icon
+import androidx.wear.compose.material.PositionIndicator
+import androidx.wear.compose.material.Scaffold
+import androidx.wear.compose.material.ScalingLazyColumn
 import androidx.wear.compose.material.TimeText
+import androidx.wear.compose.material.Vignette
+import androidx.wear.compose.material.VignettePosition
+import androidx.wear.compose.material.items
+import androidx.wear.compose.material.rememberScalingLazyListState
+import androidx.wear.compose.material.scrollAway
 import com.narcis.wearos.ui.theme.ModernAndroidDevelopmentTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContent {
             ModernAndroidDevelopmentTheme {
                 // A surface container using the 'background' color from the theme
@@ -54,10 +64,40 @@ fun WearApp(greetingName: String) {
                 .background(androidx.wear.compose.material.MaterialTheme.colors.background),
             contentAlignment = Alignment.Center
         ) {
-            Sample2Button()
-
+//            Sample2Button()
+            val itemList = listOf("Item 1", "Item 2", "Item 3", "Item 4", "Item 5",)
+            WearOSList(itemList = itemList)
         }
     }
+}
+
+@Composable
+fun WearOSList(itemList: List<String>) {
+    val scalingListState = rememberScalingLazyListState()
+    Scaffold(
+        timeText = { TimeText(modifier = Modifier.scrollAway(scalingListState)) },
+        vignette = { Vignette(vignettePosition = VignettePosition.TopAndBottom) },
+        positionIndicator = {
+            PositionIndicator(
+                scalingLazyListState = scalingListState
+            )
+        }
+    ) {
+        ScalingLazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            autoCentering = AutoCenteringParams(itemIndex = 0),
+            state = scalingListState
+        ) {
+
+            items(itemList) { item ->
+                WearOSListItem(item = item)
+            }
+        }
+    }
+}
+@Composable
+fun WearOSListItem(item: String) {
+    Text(text = item)
 }
 
 @Composable
