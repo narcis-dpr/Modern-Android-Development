@@ -2,4 +2,5 @@
     <string name="app_name">GUIAlerrts</string>
     <string name="menu">menu</string>
     <string name="menu_drop_down">menu drop down</string>
+    <string name="title_message">title message</string>
 </resources>
