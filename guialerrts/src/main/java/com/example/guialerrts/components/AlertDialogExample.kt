@@ -13,7 +13,7 @@ import androidx.compose.ui.window.DialogProperties
 @Composable
 fun AlertDialogExample() {
     val dialog = remember {
-        mutableStateOf(false)
+        mutableStateOf(true)
     }
     if (dialog.value) {
         AlertDialog(
