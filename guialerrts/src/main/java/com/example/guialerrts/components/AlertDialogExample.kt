@@ -17,8 +17,7 @@ fun AlertDialogExample() {
     if (dialog.value) {
         AlertDialog(
             onDismissRequest = {
-                // Handle outside clicks
-
+                dialog.value = false
             },
             title = {
                 Text(text = "Alert Dialog Title")
