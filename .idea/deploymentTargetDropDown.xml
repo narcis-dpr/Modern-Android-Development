@@ -5,6 +5,9 @@
       <entry key="ShowAlertDialog">
         <State />
       </entry>
+      <entry key="ShowBottomSheetDialog">
+        <State />
+      </entry>
       <entry key="ShowMenuComponent">
         <State />
       </entry>
